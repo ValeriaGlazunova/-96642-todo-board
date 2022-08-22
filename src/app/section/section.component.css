@@ -20,6 +20,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
 }
 
 .section__head_color_orange {
@@ -36,4 +37,22 @@
 
 .section__head_color_green {
   background-color: lightgreen;
+}
+
+.section__title {
+  margin: 0;
+  padding: 25px 0 25px 25px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.section__task-counter {
+  margin: 0;
+  padding: 25px 25px 25px 0;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
 }
