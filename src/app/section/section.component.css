@@ -1,0 +1,39 @@
+.section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.section__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 100%;
+}
+
+.section__head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.section__head_color_orange {
+  background-color: orange;
+}
+
+.section__head_color_red {
+  background-color: red;
+}
+
+.section__head_color_blue {
+  background-color: lightblue;
+}
+
+.section__head_color_green {
+  background-color: lightgreen;
+}
