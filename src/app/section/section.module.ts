@@ -11,6 +11,11 @@ import { TaskComponent } from '../task/task.component';
     SectionComponent,
     TaskComponent
   ],
+  exports: [
+    HeaderComponent,
+    SectionComponent,
+    TaskComponent
+  ],
   imports: [
     BrowserModule
   ],
