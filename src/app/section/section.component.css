@@ -56,3 +56,22 @@
   font-size: 18px;
   line-height: 18px;
 }
+
+.section__task-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.section__task-box__add-task {
+  margin: 0 auto;
+  background-image: url(../../images/plus-svgrepo-com.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  margin-top: 20px;
+}

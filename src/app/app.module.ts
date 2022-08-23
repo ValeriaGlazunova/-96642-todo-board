@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SectionModule } from './section/section.module';
 
@@ -12,7 +11,6 @@ import { SectionModule } from './section/section.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     SectionModule
   ],
   providers: [],

@@ -1,0 +1,62 @@
+.task {
+  margin: 10px auto 15px;
+  background-color: #ffffff;
+  max-width: 340px;
+  border-radius: 0 10px 10px;
+}
+
+.task__info-container {
+  width: 320px;
+  padding: 10px 10px 5px;
+}
+
+.task__title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 22px;
+  margin: 0 0 5px;
+}
+
+.task__date {
+  color:rgb(203, 103, 85);
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.task__description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  margin: 0 0 15px;
+}
+
+.task__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 10px 10px 10px;
+}
+
+.task__complete {
+  background-image: url(../../images/checkmark-complete-correct-svgrepo-com.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.task__delete {
+  background-image: url(../../images/delete-svgrepo-com.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+}
