@@ -1,6 +1,7 @@
 .header__title {
+  max-width: 1360px;
   background-color: #ffffff;
-  margin: 0;
+  margin: 0 auto;
   padding: 30px 0 30px 30px;
   text-align: start;
 }

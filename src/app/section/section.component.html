@@ -1,41 +1,13 @@
-<section class="section">
+
   <div class="section__container">
-    <div class="section__head section__head_color_orange">
-    <h3 class="section__title">Idea</h3>
-    <span class="section__task-counter">0</span>
-  </div>
-    <div class="section__task-box">
-      <app-task></app-task>
-      <app-task></app-task>
-      <button class="section__task-box__add-task"></button>
+    <div class="section__head" [style.background]="color">
+      <h3 class="section__title">{{ title }}</h3>
+      <span class="section__task-counter">{{ taskNumber }}</span>
     </div>
-</div>
-<div class="section__container">
-  <div class="section__head section__head_color_red">
-    <h3 class="section__title">To do</h3>
-    <span class="section__task-counter">0</span>
-  </div>
     <div class="section__task-box">
       <app-task></app-task>
       <button class="section__task-box__add-task"></button>
     </div>
-</div>
-<div class="section__container">
-  <div class="section__head section__head_color_blue">
-    <h3 class="section__title">In process</h3>
-    <span class="section__task-counter">0</span>
   </div>
-    <div class="section__task-box">
-      <button class="section__task-box__add-task"></button>
-    </div>
-</div>
-<div class="section__container">
-  <div class="section__head section__head_color_green">
-    <h3 class="section__title">Done</h3>
-    <span class="section__task-counter">0</span>
-  </div>
-    <div class="section__task-box">
-      <button class="section__task-box__add-task"></button>
-    </div>
-</div>
-</section>
+
+

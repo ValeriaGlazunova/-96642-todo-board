@@ -1,12 +1,12 @@
 .task {
   margin: 10px auto 15px;
   background-color: #ffffff;
-  max-width: 340px;
+  max-width: 320px;
   border-radius: 0 10px 10px;
 }
 
 .task__info-container {
-  width: 320px;
+  width: 300px;
   padding: 10px 10px 5px;
 }
 

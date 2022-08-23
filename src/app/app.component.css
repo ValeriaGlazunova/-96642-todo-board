@@ -1,1 +1,13 @@
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
 
+
+.section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
