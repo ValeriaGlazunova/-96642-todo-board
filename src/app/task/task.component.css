@@ -47,9 +47,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: inherit;
   width: 20px;
   height: 20px;
   margin-right: 10px;
+  border-style: none;
   transition: opacity 1s;
 }
 .task__complete:hover {
@@ -62,8 +64,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: inherit;
   width: 20px;
   height: 20px;
+  border-style: none;
   transition: opacity 1s;
 }
 

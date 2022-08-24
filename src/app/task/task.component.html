@@ -1,11 +1,11 @@
 <div class="task">
   <div class="task__info-container">
-    <h3 class="task__title">задача</h3>
+    <h3 class="task__title">{{title}}</h3>
     <p class="task__date">дата</p>
-     <p class="task__description">описание</p>
+     <p class="task__description">{{description}}</p>
   </div>
   <div class="task__actions">
-    <div class="task__complete"></div>
-    <div class="task__delete"></div>
+    <button class="task__complete"></button>
+    <button (click)="deleteTask()" class="task__delete"></button>
   </div>
 </div>
