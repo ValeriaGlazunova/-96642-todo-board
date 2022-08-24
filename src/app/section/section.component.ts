@@ -23,4 +23,13 @@ export class SectionComponent {
 
   tasks: boolean = true;
 
+  newTask: Task  = {
+    title: 'title',
+    description: 'description'
+  }
+
+  addTask(): void {
+    this.currentTasks.push(this.newTask)
+  }
+
 };

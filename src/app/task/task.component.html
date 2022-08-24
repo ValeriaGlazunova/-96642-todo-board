@@ -5,7 +5,7 @@
      <p class="task__description">{{description}}</p>
   </div>
   <div class="task__actions">
-    <button class="task__complete"></button>
+    <button (click)="completeTask()" class="task__complete"></button>
     <button (click)="deleteTask()" class="task__delete"></button>
   </div>
 </div>

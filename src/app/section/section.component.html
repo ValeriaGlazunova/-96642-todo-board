@@ -11,7 +11,7 @@
         [description]="task.description"
       ></app-task>
     </div>
-    <button class="section__task-box__add-task"></button>
+    <button (click)="addTask()" class="section__task-box__add-task"></button>
   </div>
 
   <ng-template #noTasks>

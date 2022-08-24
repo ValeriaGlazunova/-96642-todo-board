@@ -15,4 +15,8 @@ export class TaskComponent {
     console.log('delete button clicked!');
   }
 
+  completeTask(): void {
+    console.log('complete button clicked!')
+  }
+
 };
