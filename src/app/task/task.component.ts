@@ -1,5 +1,7 @@
 import { ThisReceiver, TmplAstElement } from '@angular/compiler';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-task',
@@ -11,8 +13,8 @@ export class TaskComponent {
   @Input()title: string = '';
   @Input()description: string = '';
 
-  deleteTask(): void {
-    console.log('delete button clicked!');
+  @Input()deleteTask(): void {
+    console.log('delete button clicked!')
   }
 
   completeTask(): void {

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { TaskComponent } from '../task/task.component';
 
 export interface Task {
   title: string;
@@ -21,6 +22,8 @@ export class SectionComponent {
     {title: 'task 3', description: 'description 3'}
   ]
 
+  //Отрендерить в каждом компоненте свои задачки
+
   tasks: boolean = true;
 
   newTask: Task  = {
@@ -30,6 +33,12 @@ export class SectionComponent {
 
   addTask(): void {
     this.currentTasks.push(this.newTask)
+    console.log(this.currentTasks, 'arr')
+  }
+
+  // как обратиться к конкретному элементу задачки и удалить его?
+  deleteThisTask(): any {
+
   }
 
 };
