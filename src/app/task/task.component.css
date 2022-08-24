@@ -50,6 +50,11 @@
   width: 20px;
   height: 20px;
   margin-right: 10px;
+  transition: opacity 1s;
+}
+.task__complete:hover {
+  opacity: .5;
+  cursor: pointer;
 }
 
 .task__delete {
@@ -59,4 +64,10 @@
   background-position: center;
   width: 20px;
   height: 20px;
+  transition: opacity 1s;
+}
+
+.task__delete:hover {
+  opacity: .5;
+  cursor: pointer;
 }

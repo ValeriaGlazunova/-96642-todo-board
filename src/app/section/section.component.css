@@ -49,4 +49,10 @@
   border: none;
   border-radius: 50%;
   margin-top: 20px;
+  transition: opacity 1s;
+}
+
+.section__task-box__add-task:hover {
+  opacity: .5;
+  cursor: pointer;
 }
