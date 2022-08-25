@@ -6,6 +6,6 @@
   </div>
   <div class="task__actions">
     <button (click)="completeTask()" class="task__complete"></button>
-    <button (click)="deleteTask()" class="task__delete"></button>
+    <button (click)="deleteTask.emit(id)" class="task__delete"></button>
   </div>
 </div>

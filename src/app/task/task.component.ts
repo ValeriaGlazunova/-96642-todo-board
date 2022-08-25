@@ -1,5 +1,4 @@
-import { ThisReceiver, TmplAstElement } from '@angular/compiler';
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 
 
@@ -13,10 +12,9 @@ export class TaskComponent {
   @Input()title: string = '';
   @Input()description: string = '';
   @Input()taskDate: Date = new Date;
+  @Input()id: number = 0;
 
-  @Input()deleteTask(): void {
-    console.log('delete button clicked!')
-  }
+  @Output() deleteTask: EventEmitter<any> = new EventEmitter<any>(null);
 
   completeTask(): void {
     console.log('complete button clicked!')

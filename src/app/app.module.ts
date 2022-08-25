@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SectionModule } from './section/section.module';
@@ -11,7 +12,8 @@ import { SectionModule } from './section/section.module';
   ],
   imports: [
     BrowserModule,
-    SectionModule
+    SectionModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

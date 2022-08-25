@@ -6,10 +6,11 @@
     </div>
     <div *ngIf="tasks; else noTasks" class="section__task-box">
       <app-task
-        *ngFor="let task of currentTasks"
+        *ngFor="let task of currentTasks; index as idx"
         [title]="task.title"
         [description]="task.description"
-        [deleteTask]="deleteThisTask()"
+        [id]="task.id"
+        (deleteTask)="deleteThisTask($event)"
       ></app-task>
     </div>
     <button (click)="addTask()" class="section__task-box__add-task"></button>
