@@ -12,6 +12,7 @@ export class TaskComponent {
 
   @Input()title: string = '';
   @Input()description: string = '';
+  @Input()taskDate: Date = new Date;
 
   @Input()deleteTask(): void {
     console.log('delete button clicked!')
