@@ -35,14 +35,14 @@ export class SectionComponent {
   addTask(): void {
     this.currentTasks.push(this.newTask)
     console.log(this.currentTasks, 'arr')
-    // дублирование кода?
     this.taskNumber = this.currentTasks.length
   }
 
   // как обратиться к конкретному элементу задачки и удалить его?
   deleteThisTask(taskid: number): any {
     console.log('taskid', taskid)
-   // this.currentTasks = this.currentTasks.filter((item) => item !== task)
+    this.currentTasks = this.currentTasks.filter((item) => item.id !== taskid)
+    this.taskNumber = this.currentTasks.length
   }
 
 };

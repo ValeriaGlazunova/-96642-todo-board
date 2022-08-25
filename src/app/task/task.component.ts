@@ -14,7 +14,7 @@ export class TaskComponent {
   @Input()taskDate: Date = new Date;
   @Input()id: number = 0;
 
-  @Output() deleteTask: EventEmitter<any> = new EventEmitter<any>(null);
+  @Output() deleteTask: EventEmitter<number> = new EventEmitter<number>();
 
   completeTask(): void {
     console.log('complete button clicked!')
