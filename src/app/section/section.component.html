@@ -4,7 +4,7 @@
       <h3 class="section__title">{{ title }}</h3>
       <span class="section__task-counter">{{ taskNumber }}</span>
     </div>
-    <div *ngIf="tasks; else noTasks" class="section__task-box">
+    <div *ngIf="taskNumber !== 0; else noTasks" class="section__task-box">
       <app-task
         *ngFor="let task of currentTasks; index as idx"
         [task]="task"

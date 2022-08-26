@@ -15,15 +15,13 @@ export interface Task {
 export class SectionComponent {
 
   @ViewChild('popup', { read: ViewContainerRef })
-  private viewRef: ViewContainerRef|undefined;
+  private viewRef!: ViewContainerRef;
 
-  private componentRef: ComponentRef<ModalformComponent> | undefined;
+  private componentRef!: ComponentRef<ModalformComponent>;
 
   showPopup(): void {
-    if(this.viewRef && this.componentRef !== undefined) {
     this.viewRef.clear();
     this.componentRef = this.viewRef.createComponent(ModalformComponent);
-  }
 }
 
   currentTasks: Task[] =[
@@ -31,13 +29,12 @@ export class SectionComponent {
     {title: 'task 2', description: 'description 2', id: 2},
     {title: 'task 3', description: 'description 3', id: 3}
   ]
+
   @Input()title: string = 'Idea';
   taskNumber: number = this.currentTasks.length;
   @Input()color: string = 'rgb(255, 0, 0)';
 
   //Отрендерить в каждом компоненте свои задачки
-
-  tasks: boolean = true;
 
   newTask: Task  = {
     title: 'title',
@@ -53,7 +50,6 @@ export class SectionComponent {
 
 
   deleteThisTask(taskid: number): any {
-    console.log('taskid', taskid)
     this.currentTasks = this.currentTasks.filter((item) => item.id !== taskid)
     this.taskNumber = this.currentTasks.length
   }
