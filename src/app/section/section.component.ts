@@ -24,6 +24,12 @@ export class SectionComponent {
     this.componentRef = this.viewRef.createComponent(ModalformComponent);
 }
 
+// к чему привязать эту функцию, если кнопка закрытия модалки внутри компонента модалки?
+  closeThisPopup(): void {
+  this.viewRef.clear();
+}
+
+
   currentTasks: Task[] =[
     {title: 'task 1', description: 'description 1', id: 1},
     {title: 'task 2', description: 'description 2', id: 2},
