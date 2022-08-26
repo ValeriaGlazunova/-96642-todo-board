@@ -6,5 +6,5 @@
     <app-section [color]="'#3c90de'" [title]="'In process'"></app-section>
     <app-section [color]="'#3cde4c'" [title]="'Done'"></app-section>
   </section>
-  <app-modalform></app-modalform>
+  <app-modalform *ngIf="popupOpened"></app-modalform>
 </div>

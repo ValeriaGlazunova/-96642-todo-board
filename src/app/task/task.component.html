@@ -1,11 +1,11 @@
 <div class="task">
   <div class="task__info-container">
-    <h3 class="task__title">{{title}}</h3>
-    <p class="task__date">{{taskDate  | date:'dd MMMM y':undefined:'ru'}}</p>
-     <p class="task__description">{{description}}</p>
+    <h3 class="task__title">{{task.title}}</h3>
+    <p class="task__date">{{ taskDate  | date:'dd MMMM y':undefined:'ru'}}</p>
+     <p class="task__description">{{task.description}}</p>
   </div>
   <div class="task__actions">
     <button (click)="completeTask()" class="task__complete"></button>
-    <button (click)="deleteTask.emit(id)" class="task__delete"></button>
+    <button (click)="deleteTask.emit(task.id)" class="task__delete"></button>
   </div>
 </div>

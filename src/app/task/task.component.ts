@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+import { Task } from '../section/section.component';
 
 
 @Component({
@@ -9,10 +9,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class TaskComponent {
 
-  @Input()title: string = '';
-  @Input()description: string = '';
+  @Input()
+  task!: Task;
+
+  // @Input()title: string = '';
+  // @Input()description: string = '';
   @Input()taskDate: Date = new Date;
-  @Input()id: number = 0;
+  //@Input()id: number = 0;
 
   @Output() deleteTask: EventEmitter<number> = new EventEmitter<number>();
 

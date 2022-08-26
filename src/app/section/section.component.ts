@@ -1,4 +1,5 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, ComponentRef, Input, ViewChild, ViewContainerRef } from '@angular/core';
+import { ModalformComponent } from '../modalform/modalform.component';
 
 export interface Task {
   title: string;
@@ -12,6 +13,18 @@ export interface Task {
   styleUrls: ['./section.component.css']
 })
 export class SectionComponent {
+
+  @ViewChild('popup', { read: ViewContainerRef })
+  private viewRef: ViewContainerRef|undefined;
+
+  private componentRef: ComponentRef<ModalformComponent> | undefined;
+
+  showPopup(): void {
+    if(this.viewRef && this.componentRef !== undefined) {
+    this.viewRef.clear();
+    this.componentRef = this.viewRef.createComponent(ModalformComponent);
+  }
+}
 
   currentTasks: Task[] =[
     {title: 'task 1', description: 'description 1', id: 1},
@@ -32,13 +45,13 @@ export class SectionComponent {
     id: 4
   }
 
-  addTask(): void {
+   addTask(): void {
     this.currentTasks.push(this.newTask)
     console.log(this.currentTasks, 'arr')
     this.taskNumber = this.currentTasks.length
   }
 
-  // как обратиться к конкретному элементу задачки и удалить его?
+
   deleteThisTask(taskid: number): any {
     console.log('taskid', taskid)
     this.currentTasks = this.currentTasks.filter((item) => item.id !== taskid)
