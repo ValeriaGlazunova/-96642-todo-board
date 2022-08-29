@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from '../section/section.component';
+import { ITask } from '../section/section.component';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Task } from '../section/section.component';
 export class TaskComponent {
 
   @Input()
-  task!: Task;
+  task!: ITask;
   @Input()taskDate: Date = new Date;
 
 
