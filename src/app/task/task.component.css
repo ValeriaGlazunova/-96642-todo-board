@@ -75,3 +75,21 @@
   opacity: .5;
   cursor: pointer;
 }
+
+.task__edit {
+  background-image: url(../../images/edit-svgrepo-com.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-style: none;
+  transition: opacity 1s;
+}
+
+.task__edit:hover {
+  opacity: .5;
+  cursor: pointer;
+}

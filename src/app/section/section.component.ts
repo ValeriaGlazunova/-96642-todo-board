@@ -27,10 +27,14 @@ export class SectionComponent {
       const newTask: ITask  = {
         title: event.title,
         description: event.description,
-        id: 4
+        id: event.id
       }
       this.currentTasks.push(newTask);
+      this.taskNumber = this.currentTasks.length
       this.componentRef.destroy()
+      this.componentRef.instance.onClosePopup.subscribe(event => {
+        console.log(event, 'this clicked')
+      })
     })
 }
 
@@ -69,6 +73,11 @@ export class SectionComponent {
   deleteThisTask(taskid: number): any {
     this.currentTasks = this.currentTasks.filter((item) => item.id !== taskid)
     this.taskNumber = this.currentTasks.length
+  }
+
+  openEditPopup(taskid: number): any {
+    if( taskid )
+    this.showPopup( this.modal.title = 'Edit task')
   }
 
 };

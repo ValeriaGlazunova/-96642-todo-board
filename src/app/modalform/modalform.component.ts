@@ -2,6 +2,10 @@ import { Component, EventEmitter, OnInit, Output, Input } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ITask } from "../section/section.component";
 
+export interface Modal {
+  title: string;
+}
+
 @Component ({
   selector: 'app-modalform',
   templateUrl: './modalform.component.html',
@@ -10,12 +14,16 @@ import { ITask } from "../section/section.component";
 
 export class ModalformComponent implements OnInit {
 
-  form: FormGroup | undefined;
+  form: FormGroup;
+
 
   taskName: string = ''
   taskDescription: string = '';
-  @Input() task: ITask | undefined;
+  modalid: number  = 1;
+  @Input() task: ITask;
+  @Input() modal: Modal;
   @Output() onAddTask = new EventEmitter<any>();
+  @Output() onClosePopup = new EventEmitter<number>();
 
 
   public ngOnInit(): void {
@@ -26,9 +34,12 @@ export class ModalformComponent implements OnInit {
     }
   }
 
-  // нужно повесить слушатель в компонент <add-modalform (onAddTask)="updateTaskList()" ></add-modalform>
   addTask() {
     this.onAddTask.emit(this.form.value);
+  }
+
+  closePopup() {
+     this.onClosePopup.emit();
   }
 
   private createForm (taskName: string, taskDescription: string): void {

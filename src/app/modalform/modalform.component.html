@@ -1,7 +1,7 @@
 <div class="modal modal__open">
   <div class="modal__container">
-    <button class="modal__close-btn" type="button"></button>
-    <h3 class="modal__title">Add task</h3>
+    <button class="modal__close-btn" type="button" (click)="closePopup()" ></button>
+    <h3 class="modal__title">{{modal.title}}</h3>
     <form [formGroup]="form" class="modal__form">
       <input formControlName="title" class="modal__input modal__input_type_taskname" placeholder="task name" />
       <input formControlName="description" class="modal__input modal__input_type_taskdescription" placeholder="task description"/>
