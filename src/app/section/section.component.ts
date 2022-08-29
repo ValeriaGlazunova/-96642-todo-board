@@ -15,9 +15,9 @@ export interface ITask {
 export class SectionComponent {
 
   @ViewChild('popup', { read: ViewContainerRef })
-  private viewRef!: ViewContainerRef;
+  private viewRef: ViewContainerRef;
 
-  private componentRef!: ComponentRef<ModalformComponent>;
+  private componentRef: ComponentRef<ModalformComponent>;
 
   showPopup(): void {
     this.viewRef.clear();
@@ -27,23 +27,16 @@ export class SectionComponent {
       const newTask: ITask  = {
         title: event.title,
         description: event.description,
-        id: event.id
+        id: this.taskNumber+1
       }
       this.currentTasks.push(newTask);
       this.taskNumber = this.currentTasks.length
       this.componentRef.destroy()
     })
-    this.componentRef.instance.onClosePopup.subscribe(event => {
+      this.componentRef.instance.onClosePopup.subscribe(() => {
       this.componentRef.destroy()
     })
 }
-
-// к чему привязать эту функцию, если кнопка закрытия модалки внутри компонента модалки?
-  closeThisPopup(): void {
-    console.log('this clicked')
-  this.viewRef.clear();
-}
-
 
   currentTasks: ITask[] =[
     {title: 'task 1', description: 'description 1', id: 1},
@@ -62,8 +55,10 @@ export class SectionComponent {
   }
 
   openEditPopup(taskid: number): any {
-    if( taskid )
+    console.log( taskid, 'id')
+    if (taskid) {
     this.showPopup()
+    }
   }
 
 };

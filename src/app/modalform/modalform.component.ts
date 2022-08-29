@@ -2,10 +2,6 @@ import { Component, EventEmitter, OnInit, Output, Input } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ITask } from "../section/section.component";
 
-export interface Modal {
-  title: string;
-}
-
 @Component ({
   selector: 'app-modalform',
   templateUrl: './modalform.component.html',
@@ -15,21 +11,21 @@ export interface Modal {
 export class ModalformComponent implements OnInit {
 
   form: FormGroup;
-
-
   taskName: string = ''
   taskDescription: string = '';
   modalid: number  = 1;
   @Input() task: ITask;
-  @Input() modal: Modal;
+  @Input() modalName: string;
   @Output() onAddTask = new EventEmitter<any>();
   @Output() onClosePopup = new EventEmitter<any>();
 
 
   public ngOnInit(): void {
     if (this.task) {
+      this.modalName = 'Edit task'
       this.createForm(this.task.title, this.task.description)
     } else {
+      this.modalName = 'Add task'
       this.createForm('', '')
     }
   }

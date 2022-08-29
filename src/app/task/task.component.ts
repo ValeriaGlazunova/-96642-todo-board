@@ -21,6 +21,4 @@ export class TaskComponent {
     console.log('complete button clicked!')
   }
 
-
-
 };
