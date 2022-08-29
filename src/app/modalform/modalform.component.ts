@@ -23,7 +23,7 @@ export class ModalformComponent implements OnInit {
   @Input() task: ITask;
   @Input() modal: Modal;
   @Output() onAddTask = new EventEmitter<any>();
-  @Output() onClosePopup = new EventEmitter<number>();
+  @Output() onClosePopup = new EventEmitter<any>();
 
 
   public ngOnInit(): void {

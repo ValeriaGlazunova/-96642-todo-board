@@ -32,9 +32,9 @@ export class SectionComponent {
       this.currentTasks.push(newTask);
       this.taskNumber = this.currentTasks.length
       this.componentRef.destroy()
-      this.componentRef.instance.onClosePopup.subscribe(event => {
-        console.log(event, 'this clicked')
-      })
+    })
+    this.componentRef.instance.onClosePopup.subscribe(event => {
+      this.componentRef.destroy()
     })
 }
 
@@ -55,20 +55,6 @@ export class SectionComponent {
   taskNumber: number = this.currentTasks.length;
   @Input()color: string = 'rgb(255, 0, 0)';
 
-  //Отрендерить в каждом компоненте свои задачки
-
-  // newTask: ITask  = {
-  //   title: 'title',
-  //   description: 'description',
-  //   id: 4
-  // }
-
-  //  updateTaskList(): void {
-  //   this.currentTasks.push(this.newTask)
-  //   console.log(this.currentTasks, 'arr')
-  //   this.taskNumber = this.currentTasks.length
-  // }
-
 
   deleteThisTask(taskid: number): any {
     this.currentTasks = this.currentTasks.filter((item) => item.id !== taskid)
@@ -77,7 +63,7 @@ export class SectionComponent {
 
   openEditPopup(taskid: number): any {
     if( taskid )
-    this.showPopup( this.modal.title = 'Edit task')
+    this.showPopup()
   }
 
 };
