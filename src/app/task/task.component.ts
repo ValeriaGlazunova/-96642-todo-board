@@ -11,7 +11,6 @@ export class TaskComponent {
 
   @Input()
   task!: ITask;
-  @Input()taskDate: Date = new Date;
 
 
   @Output() deleteTask: EventEmitter<number> = new EventEmitter<number>();

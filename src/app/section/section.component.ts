@@ -4,7 +4,8 @@ import { ModalformComponent } from '../modalform/modalform.component';
 export interface ITask {
   title: string;
   description: string;
-  id: number
+  id: number;
+  date: Date;
 }
 
 @Component({
@@ -27,7 +28,8 @@ export class SectionComponent {
       const newTask: ITask  = {
         title: event.title,
         description: event.description,
-        id: this.taskNumber+1
+        id: this.taskNumber+1,
+        date: new Date
       }
       this.currentTasks.push(newTask);
       this.taskNumber = this.currentTasks.length
@@ -39,9 +41,9 @@ export class SectionComponent {
 }
 
   currentTasks: ITask[] =[
-    {title: 'task 1', description: 'description 1', id: 1},
-    {title: 'task 2', description: 'description 2', id: 2},
-    {title: 'task 3', description: 'description 3', id: 3}
+    {title: 'task 1', description: 'description 1', id: 1, date: new Date},
+    {title: 'task 2', description: 'description 2', id: 2, date: new Date},
+    {title: 'task 3', description: 'description 3', id: 3, date: new Date}
   ]
 
   @Input()title: string = 'Idea';
