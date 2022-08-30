@@ -9,7 +9,7 @@
         *ngFor="let task of currentTasks; index as idx"
         [task]="task"
         (deleteTask)="deleteThisTask($event)"
-        (showEditPopup)="openEditPopup($event)"
+        (showEditPopup)="showPopup($event)"
       ></app-task>
     </div>
     <button (click)="showPopup()" class="section__task-box__add-task"></button>

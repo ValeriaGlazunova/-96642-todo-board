@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Input, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, Input, ViewChild, ViewContainerRef, Output } from '@angular/core';
 import { ModalformComponent } from '../modalform/modalform.component';
 
 export interface ITask {
@@ -20,9 +20,10 @@ export class SectionComponent {
 
   private componentRef: ComponentRef<ModalformComponent>;
 
-  showPopup(): void {
+  showPopup(taskid = 0): void {
     this.viewRef.clear();
     this.componentRef = this.viewRef.createComponent(ModalformComponent);
+    this.componentRef.instance.task = this.currentTasks.find((task) => task.id === taskid )
     this.componentRef.instance.onAddTask.subscribe(event => {
       console.log(event);
       const newTask: ITask  = {
@@ -56,11 +57,6 @@ export class SectionComponent {
     this.taskNumber = this.currentTasks.length
   }
 
-  openEditPopup(taskid: number): any {
-    console.log( taskid, 'id')
-    if (taskid) {
-    this.showPopup()
-    }
-  }
+
 
 };
