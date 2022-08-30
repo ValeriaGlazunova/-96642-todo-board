@@ -10,14 +10,13 @@ import { ITask } from "../task/task.interface";
 
 export class ModalformComponent implements OnInit {
 
-  form: FormGroup;
-  taskName: string = ''
-  taskDescription: string = '';
+  public form: FormGroup;
   modalid: number  = 1;
   @Input() task: ITask;
-  @Input() modalName: string;
-  @Output() onAddTask = new EventEmitter<any>();
-  @Output() onClosePopup = new EventEmitter<any>();
+  @Input() public modalName: string;
+  @Output() public onAddTask = new EventEmitter<any>();
+  @Output() public onClosePopup = new EventEmitter<any>();
+  @Output() public onEditTask = new EventEmitter<any>();
 
 
   public ngOnInit(): void {
@@ -36,6 +35,10 @@ export class ModalformComponent implements OnInit {
 
   public closePopup() {
      this.onClosePopup.emit();
+  }
+
+  public editTask() {
+    this.onEditTask.emit(this.form.value)
   }
 
   private createForm (taskName: string, taskDescription: string): void {

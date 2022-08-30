@@ -22,6 +22,17 @@ export class SectionComponent {
     this.viewRef.clear();
     this.componentRef = this.viewRef.createComponent(ModalformComponent);
     this.componentRef.instance.task = this.currentTasks.find((task) => task.id === taskid )
+    this.componentRef.instance.onEditTask.subscribe(event => {
+      console.log(event, 'changes')
+      const newTask: ITask  = {
+        title: event.title,
+        description: event.description,
+        id: this.taskNumber,
+        date: new Date
+      }
+      this.currentTasks.splice(taskid-1, 1, newTask)
+      this.componentRef.destroy()
+    })
     this.componentRef.instance.onAddTask.subscribe(event => {
       console.log(event);
       const newTask: ITask  = {
@@ -52,7 +63,5 @@ export class SectionComponent {
     this.currentTasks = this.currentTasks.filter((item) => item.id !== taskid)
     this.taskNumber = this.currentTasks.length
   }
-
-
 
 };
