@@ -24,13 +24,13 @@ export class SectionComponent {
     this.componentRef.instance.task = this.currentTasks.find((task) => task.id === taskid )
     this.componentRef.instance.onEditTask.subscribe(event => {
       console.log(event, 'changes')
-      const newTask: ITask  = {
+      const editedTask: ITask  = {
         title: event.title,
         description: event.description,
-        id: this.taskNumber,
+        id: taskid,
         date: new Date
       }
-      this.currentTasks.splice(taskid-1, 1, newTask)
+      this.currentTasks.splice(taskid-1, 1, editedTask)
       this.componentRef.destroy()
     })
     this.componentRef.instance.onAddTask.subscribe(event => {
