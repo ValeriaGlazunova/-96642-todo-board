@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, Input } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { ConnectableObservable } from "rxjs";
-import { ITask } from "../section/section.component";
+import { ITask } from "../task/task.interface";
 
 @Component ({
   selector: 'app-modalform',
@@ -31,11 +30,11 @@ export class ModalformComponent implements OnInit {
     }
   }
 
-  addTask() {
+  public addTask() {
     this.onAddTask.emit(this.form.value);
   }
 
-  closePopup() {
+  public closePopup() {
      this.onClosePopup.emit();
   }
 

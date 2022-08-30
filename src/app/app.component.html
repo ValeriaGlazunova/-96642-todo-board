@@ -1,10 +1,9 @@
 <div class="container">
   <app-header></app-header>
   <section class="section">
-    <app-section [color]="'#de8a3c'"></app-section>
-    <app-section [color]="'#de3c3c'" [title]="'To do'"></app-section>
-    <app-section [color]="'#3c90de'" [title]="'In process'"></app-section>
-    <app-section [color]="'#3cde4c'" [title]="'Done'"></app-section>
+    <app-section class="section__flex-item"
+    *ngFor="let section of sections"
+    [section]="section"
+    ></app-section>
   </section>
-  <app-modalform *ngIf="popupOpened"></app-modalform>
 </div>

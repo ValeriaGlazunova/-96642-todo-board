@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Section } from './section/section.interface';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-board';
-  popupOpened: boolean=false;
+
+  public sections: Section[] = [
+    {color: '#de8a3c', title: 'Idea'},
+    {color: '#de3c3c', title: 'To do'},
+    {color: '#3c90de', title: 'In process'},
+    {color: '#3cde4c', title: 'Done'},
+  ]
+
+
 }

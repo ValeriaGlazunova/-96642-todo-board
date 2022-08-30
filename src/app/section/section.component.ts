@@ -1,12 +1,8 @@
 import { Component, ComponentRef, Input, ViewChild, ViewContainerRef, Output } from '@angular/core';
+import { Section } from './section.interface';
 import { ModalformComponent } from '../modalform/modalform.component';
+import { ITask } from '../task/task.interface';
 
-export interface ITask {
-  title: string;
-  description: string;
-  id: number;
-  date: Date;
-}
 
 @Component({
   selector: 'app-section',
@@ -14,6 +10,8 @@ export interface ITask {
   styleUrls: ['./section.component.css']
 })
 export class SectionComponent {
+
+  @Input() section: Section;
 
   @ViewChild('popup', { read: ViewContainerRef })
   private viewRef: ViewContainerRef;
@@ -41,18 +39,16 @@ export class SectionComponent {
     })
 }
 
-  currentTasks: ITask[] =[
+  public currentTasks: ITask[] =[
     {title: 'task 1', description: 'description 1', id: 1, date: new Date},
     {title: 'task 2', description: 'description 2', id: 2, date: new Date},
     {title: 'task 3', description: 'description 3', id: 3, date: new Date}
   ]
 
-  @Input()title: string = 'Idea';
-  taskNumber: number = this.currentTasks.length;
-  @Input()color: string = 'rgb(255, 0, 0)';
+  public taskNumber: number = this.currentTasks.length;
 
 
-  deleteThisTask(taskid: number): any {
+ public deleteThisTask(taskid: number): any {
     this.currentTasks = this.currentTasks.filter((item) => item.id !== taskid)
     this.taskNumber = this.currentTasks.length
   }
