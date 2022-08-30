@@ -1,0 +1,80 @@
+.section {
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 25px 0 25px 25px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  &__task-counter {
+    margin: 0;
+    padding: 25px 25px 25px 0;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  &__task-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  &__task-box__add-task {
+    margin: 0 auto;
+    background-image: url(../../images/plus-svgrepo-com.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    margin-top: 20px;
+    transition: opacity 1s;
+
+    &:hover {
+      opacity: .5;
+      cursor: pointer;
+    }
+  }
+
+  &__no-task-message {
+    margin: 10px auto;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #544d4d;
+    opacity: .8;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  &__task-item {
+    margin: 10px auto 15px;
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 0 10px 10px;
+  }
+}

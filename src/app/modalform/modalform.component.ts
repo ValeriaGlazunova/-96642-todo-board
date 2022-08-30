@@ -5,7 +5,7 @@ import { ITask } from "../task/task.interface";
 @Component ({
   selector: 'app-modalform',
   templateUrl: './modalform.component.html',
-  styleUrls: ['./modalform.component.css']
+  styleUrls: ['./modalform.component.scss']
 })
 
 export class ModalformComponent implements OnInit {

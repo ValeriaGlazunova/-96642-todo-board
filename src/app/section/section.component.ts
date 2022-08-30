@@ -7,7 +7,7 @@ import { ITask } from '../task/task.interface';
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
-  styleUrls: ['./section.component.css']
+  styleUrls: ['./section.component.scss']
 })
 export class SectionComponent {
 
