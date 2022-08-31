@@ -31,7 +31,8 @@ export class SectionComponent {
         title: event.title,
         description: event.description,
         id: taskid,
-        date: new Date
+        date: new Date,
+        sectionID: this.section.id
       }
       tasks.splice(taskid--, 1, editedTask)
       this.currentTasks.next(tasks);
@@ -44,7 +45,8 @@ export class SectionComponent {
         title: event.title,
         description: event.description,
         id: tasks.length+1,
-        date: new Date
+        date: new Date,
+        sectionID: this.section.id
       }
       console.log('tasks', tasks, newTask)
       tasks.push(newTask);
@@ -58,9 +60,9 @@ export class SectionComponent {
 }
 
   public currentTasks: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]> ([
-    {title: 'task 1', description: 'description 1', id: 1, date: new Date},
-    {title: 'task 2', description: 'description 2', id: 2, date: new Date},
-    {title: 'task 3', description: 'description 3', id: 3, date: new Date}
+    // {title: 'task 1', description: 'description 1', id: 1, date: new Date, sectionID: 1},
+    // {title: 'task 2', description: 'description 2', id: 2, date: new Date, sectionID: 2},
+    // {title: 'task 3', description: 'description 3', id: 3, date: new Date, sectionID: 3}
   ])
 
 
