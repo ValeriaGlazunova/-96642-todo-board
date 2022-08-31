@@ -10,7 +10,7 @@ import { ITask } from './task.interface';
 export class TaskComponent {
 
   @Input()
-  task!: ITask;
+  task: ITask;
 
 
   @Output() public deleteTask: EventEmitter<number> = new EventEmitter<number>();

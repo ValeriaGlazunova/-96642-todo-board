@@ -2,11 +2,11 @@
   <div class="section__container">
     <div class="section__head" [style.background]="section.color">
       <h3 class="section__title">{{ section.title }}</h3>
-      <span class="section__task-counter">{{ taskNumber }}</span>
+      <span class="section__task-counter">{{ (currentTasks | async).length }}</span>
     </div>
-    <div *ngIf="taskNumber !== 0; else noTasks" class="section__task-box">
+    <div *ngIf="(currentTasks | async).length !== 0; else noTasks" class="section__task-box">
       <app-task class="section__task-item"
-        *ngFor="let task of currentTasks; index as idx"
+        *ngFor="let task of currentTasks | async; index as idx"
         [task]="task"
         (deleteTask)="deleteThisTask($event)"
         (showEditPopup)="showPopup($event)"

@@ -2,6 +2,7 @@ import { Component, ComponentRef, Input, ViewChild, ViewContainerRef, Output } f
 import { Section } from './section.interface';
 import { ModalformComponent } from '../modalform/modalform.component';
 import { ITask } from '../task/task.interface';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -21,8 +22,10 @@ export class SectionComponent {
   showPopup(taskid = 0): void {
     this.viewRef.clear();
     this.componentRef = this.viewRef.createComponent(ModalformComponent);
-    this.componentRef.instance.task = this.currentTasks.find((task) => task.id === taskid )
+
+    this.componentRef.instance.task = this.currentTasks.value.find((task) => task.id === taskid )
     this.componentRef.instance.onEditTask.subscribe(event => {
+      const tasks: ITask[] = this.currentTasks.value;
       console.log(event, 'changes')
       const editedTask: ITask  = {
         title: event.title,
@@ -30,19 +33,23 @@ export class SectionComponent {
         id: taskid,
         date: new Date
       }
-      this.currentTasks.splice(taskid-1, 1, editedTask)
+      tasks.splice(taskid--, 1, editedTask)
+      this.currentTasks.next(tasks);
       this.componentRef.destroy()
     })
     this.componentRef.instance.onAddTask.subscribe(event => {
-      console.log(event);
+      const tasks: ITask[] = this.currentTasks.value;
+      console.log();
       const newTask: ITask  = {
         title: event.title,
         description: event.description,
-        id: this.taskNumber+1,
+        id: tasks.length+1,
         date: new Date
       }
-      this.currentTasks.push(newTask);
-      this.taskNumber = this.currentTasks.length
+      console.log('tasks', tasks, newTask)
+      tasks.push(newTask);
+      console.log('tasks1', tasks)
+      this.currentTasks.next(tasks)
       this.componentRef.destroy()
     })
       this.componentRef.instance.onClosePopup.subscribe(() => {
@@ -50,18 +57,16 @@ export class SectionComponent {
     })
 }
 
-  public currentTasks: ITask[] =[
+  public currentTasks: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]> ([
     {title: 'task 1', description: 'description 1', id: 1, date: new Date},
     {title: 'task 2', description: 'description 2', id: 2, date: new Date},
     {title: 'task 3', description: 'description 3', id: 3, date: new Date}
-  ]
+  ])
 
-  public taskNumber: number = this.currentTasks.length;
 
 
  public deleteThisTask(taskid: number): any {
-    this.currentTasks = this.currentTasks.filter((item) => item.id !== taskid)
-    this.taskNumber = this.currentTasks.length
+    this.currentTasks.next(this.currentTasks.value.filter((item) => item.id !== taskid));
   }
 
 };

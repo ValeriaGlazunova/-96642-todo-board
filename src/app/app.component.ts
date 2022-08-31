@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './data.service';
 import { Section } from './section/section.interface';
 
 @Component({
@@ -6,14 +7,17 @@ import { Section } from './section/section.interface';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   public sections: Section[] = [
-    {color: '#de8a3c', title: 'Idea'},
-    {color: '#de3c3c', title: 'To do'},
-    {color: '#3c90de', title: 'In process'},
-    {color: '#3cde4c', title: 'Done'},
   ]
 
+  constructor(private dataService: DataService) {
 
+  }
+
+  ngOnInit(): void {
+    this.dataService.addNewTask()
+    this.sections = this.dataService.sections
+  }
 }

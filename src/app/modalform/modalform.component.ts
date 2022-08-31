@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, Input } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ITask } from "../task/task.interface";
 
 @Component ({
@@ -30,7 +30,9 @@ export class ModalformComponent implements OnInit {
   }
 
   public addTask() {
+    if (this.form.valid) {
     this.onAddTask.emit(this.form.value);
+    }
   }
 
   public closePopup() {
@@ -43,8 +45,8 @@ export class ModalformComponent implements OnInit {
 
   private createForm (taskName: string, taskDescription: string): void {
     this.form = new FormGroup({
-      title: new FormControl(taskName),
-      description: new FormControl(taskDescription)
+      title: new FormControl(taskName, Validators.required),
+      description: new FormControl(taskDescription, Validators.required)
     })
   }
 }

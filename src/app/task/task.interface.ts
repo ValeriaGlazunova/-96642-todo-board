@@ -3,4 +3,5 @@ export interface ITask {
   description: string;
   id: number;
   date: Date;
+  //sectionId: number
 }
