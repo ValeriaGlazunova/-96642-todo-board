@@ -12,12 +12,11 @@ export class AppComponent implements OnInit {
 
   public sections: Section[] = []
 
-  constructor(private dataService: DataService) {
+  constructor(public dataService: DataService) {
 
   }
 
   ngOnInit(): void {
     this.dataService.addNewTask()
-    this.sections = this.dataService.sections
   }
 }

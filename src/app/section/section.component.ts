@@ -20,8 +20,8 @@ import { DataService } from './../data.service';
 })
 export class SectionComponent implements OnInit {
   @Input() section: Section;
-  public currentTasks: BehaviorSubject<ITask[]>;
-  // public currentTasks: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]> ([])
+  // public currentTasks: BehaviorSubject<ITask[]>;
+  public currentTasks: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]> ([])
 
   @ViewChild('popup', { read: ViewContainerRef })
   private viewRef: ViewContainerRef;
@@ -31,7 +31,7 @@ export class SectionComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.currentTasks = this.dataService.tasks;
+    this.currentTasks.next(this.section.tasks);
   }
 
   showPopup(taskid = 0): void {

@@ -2,7 +2,7 @@
   <app-header></app-header>
   <section class="section">
     <app-section class="section__flex-item"
-    *ngFor="let section of sections"
+    *ngFor="let section of dataService.sections$ | async"
     [section]="section"
     ></app-section>
   </section>
