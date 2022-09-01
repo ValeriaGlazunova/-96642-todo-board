@@ -1,74 +1,82 @@
-import { Component, ComponentRef, Input, ViewChild, ViewContainerRef, Output } from '@angular/core';
+import {
+  Component,
+  ComponentRef,
+  Input,
+  ViewChild,
+  ViewContainerRef,
+  Output,
+  OnInit,
+} from '@angular/core';
 import { Section } from './section.interface';
 import { ModalformComponent } from '../modalform/modalform.component';
 import { ITask } from '../task/task.interface';
 import { BehaviorSubject } from 'rxjs';
-
+import { DataService } from './../data.service';
 
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
-  styleUrls: ['./section.component.scss']
+  styleUrls: ['./section.component.scss'],
 })
-export class SectionComponent {
-
+export class SectionComponent implements OnInit {
   @Input() section: Section;
+  public currentTasks: BehaviorSubject<ITask[]>;
+  // public currentTasks: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]> ([])
 
   @ViewChild('popup', { read: ViewContainerRef })
   private viewRef: ViewContainerRef;
 
   private componentRef: ComponentRef<ModalformComponent>;
 
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.currentTasks = this.dataService.tasks;
+  }
+
   showPopup(taskid = 0): void {
     this.viewRef.clear();
     this.componentRef = this.viewRef.createComponent(ModalformComponent);
 
-    this.componentRef.instance.task = this.currentTasks.value.find((task) => task.id === taskid )
-    this.componentRef.instance.onEditTask.subscribe(event => {
+    this.componentRef.instance.task = this.currentTasks.value.find(
+      (task) => task.id === taskid
+    );
+    this.componentRef.instance.onEditTask.subscribe((event) => {
       const tasks: ITask[] = this.currentTasks.value;
-      console.log(event, 'changes')
-      const editedTask: ITask  = {
+      console.log(event, 'changes');
+      const editedTask: ITask = {
         title: event.title,
         description: event.description,
         id: taskid,
-        date: new Date,
-        sectionID: this.section.id
-      }
-      tasks.splice(taskid--, 1, editedTask)
+        date: new Date(),
+        sectionID: this.section.id,
+      };
+      tasks.splice(taskid - 1, 1, editedTask);
       this.currentTasks.next(tasks);
-      this.componentRef.destroy()
-    })
-    this.componentRef.instance.onAddTask.subscribe(event => {
+      this.componentRef.destroy();
+    });
+    this.componentRef.instance.onAddTask.subscribe((event) => {
       const tasks: ITask[] = this.currentTasks.value;
       console.log();
-      const newTask: ITask  = {
+      const newTask: ITask = {
         title: event.title,
         description: event.description,
-        id: tasks.length+1,
-        date: new Date,
-        sectionID: this.section.id
-      }
-      console.log('tasks', tasks, newTask)
+        id: tasks.length + 1,
+        date: new Date(),
+        sectionID: this.section.id,
+      };
       tasks.push(newTask);
-      console.log('tasks1', tasks)
-      this.currentTasks.next(tasks)
-      this.componentRef.destroy()
-    })
-      this.componentRef.instance.onClosePopup.subscribe(() => {
-      this.componentRef.destroy()
-    })
-}
-
-  public currentTasks: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]> ([
-    // {title: 'task 1', description: 'description 1', id: 1, date: new Date, sectionID: 1},
-    // {title: 'task 2', description: 'description 2', id: 2, date: new Date, sectionID: 2},
-    // {title: 'task 3', description: 'description 3', id: 3, date: new Date, sectionID: 3}
-  ])
-
-
-
- public deleteThisTask(taskid: number): any {
-    this.currentTasks.next(this.currentTasks.value.filter((item) => item.id !== taskid));
+      this.currentTasks.next(tasks);
+      this.componentRef.destroy();
+    });
+    this.componentRef.instance.onClosePopup.subscribe(() => {
+      this.componentRef.destroy();
+    });
   }
 
-};
+  public deleteThisTask(taskid: number): any {
+    this.currentTasks.next(
+      this.currentTasks.value.filter((item) => item.id !== taskid)
+    );
+  }
+}

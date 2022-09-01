@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { Section } from './section/section.interface';
+import { ITask } from './task/task.interface';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,7 @@ import { Section } from './section/section.interface';
 })
 export class AppComponent implements OnInit {
 
-  public sections: Section[] = [
-  ]
+  public sections: Section[] = []
 
   constructor(private dataService: DataService) {
 
