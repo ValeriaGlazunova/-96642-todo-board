@@ -43,6 +43,7 @@ export class DataService {
     console.log('service works')
     console.log(this.sectionss, 'sss')
     this.tasks.value.push(task)
+    this.sectionss.next(this.loadTasks())
 
   }
   public updateLocalStorage() {

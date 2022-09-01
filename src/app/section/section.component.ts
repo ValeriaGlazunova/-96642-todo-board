@@ -67,7 +67,7 @@ export class SectionComponent implements OnInit {
       };
       //tasks.push(newTask);
       this.dataService.addNewTask(newTask)
-      this.currentTasks.next(tasks);
+      this.currentTasks.next(this.section.tasks);
       this.componentRef.destroy();
     });
     this.componentRef.instance.onClosePopup.subscribe(() => {
