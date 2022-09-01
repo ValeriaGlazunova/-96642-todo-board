@@ -17,7 +17,7 @@ export class DataService {
   //   ]
 
   private sectionss: BehaviorSubject<Section[]> = new BehaviorSubject<Section[]> (this.loadTasks())
-  public sections: Section[] = this.loadTasks()
+  public sections: Section[];
 
   public get sections$(): Observable<Section[]> {
     return this.sectionss.asObservable()
@@ -28,8 +28,6 @@ export class DataService {
   }
 
   public loadTasks(): Section[] {
-    //получить из локального хранилища задачи, и по id секции распихать задачи по секциям
-    console.log(this.tasks, 'tasks')
     this.sections= [
       {color: '#de8a3c', title: 'Idea', id: 1, tasks: []},
       {color: '#de3c3c', title: 'To do', id: 2, tasks: []},
@@ -38,12 +36,13 @@ export class DataService {
     ]
 
     this.sections.forEach((section) => section.tasks = this.getTasks(this.tasks, section.id))
-    console.log('sections with tasks', this.sections)
     return this.sections
   }
 
-  public addNewTask() {
+  public addNewTask(task) {
     console.log('service works')
+    console.log(this.sectionss, 'sss')
+    this.tasks.value.push(task)
 
   }
   public updateLocalStorage() {

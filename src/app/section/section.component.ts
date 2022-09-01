@@ -65,7 +65,8 @@ export class SectionComponent implements OnInit {
         date: new Date(),
         sectionID: this.section.id,
       };
-      tasks.push(newTask);
+      //tasks.push(newTask);
+      this.dataService.addNewTask(newTask)
       this.currentTasks.next(tasks);
       this.componentRef.destroy();
     });
