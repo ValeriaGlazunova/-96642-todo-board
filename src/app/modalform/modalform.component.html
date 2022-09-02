@@ -5,6 +5,8 @@
     <form [formGroup]="form" class="modal__form">
       <input formControlName="title" class="modal__input modal__input_type_taskname" placeholder="task name" />
       <input formControlName="description" class="modal__input modal__input_type_taskdescription" placeholder="task description"/>
+      <input formControlName="date" class="modal__input modal__input_type_taskdate" type="date"
+      />
     </form>
     <button *ngIf="this.task; else addBtn" class="modal__submit-btn" type="submit" (click)="editTask()">Confirm</button>
     <ng-template #addBtn>

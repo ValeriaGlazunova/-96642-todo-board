@@ -22,10 +22,10 @@ export class ModalformComponent implements OnInit {
   public ngOnInit(): void {
     if (this.task) {
       this.modalName = 'Edit task'
-      this.createForm(this.task.title, this.task.description)
+      this.createForm(this.task.title, this.task.description, this.task.date)
     } else {
       this.modalName = 'Add task'
-      this.createForm('', '')
+      this.createForm('', '', null)
     }
   }
 
@@ -43,10 +43,11 @@ export class ModalformComponent implements OnInit {
     this.onEditTask.emit(this.form.value)
   }
 
-  private createForm (taskName: string, taskDescription: string): void {
+  private createForm (taskName: string, taskDescription: string, taskDate: Date): void {
     this.form = new FormGroup({
       title: new FormControl(taskName, Validators.required),
-      description: new FormControl(taskDescription, Validators.required)
+      description: new FormControl(taskDescription, Validators.required),
+      date: new FormControl(taskDate, Validators.required)
     })
   }
 }

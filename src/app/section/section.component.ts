@@ -47,7 +47,7 @@ export class SectionComponent implements OnInit {
         title: event.title,
         description: event.description,
         id: taskid,
-        date: new Date(),
+        date: event.date,
         sectionID: this.section.id,
       };
       //tasks.splice(taskid - 1, 1, editedTask);
@@ -62,7 +62,7 @@ export class SectionComponent implements OnInit {
         title: event.title,
         description: event.description,
         id: Math.random().toString(16).slice(2),
-        date: new Date(),
+        date: event.date,
         sectionID: this.section.id,
       };
       //tasks.push(newTask);
