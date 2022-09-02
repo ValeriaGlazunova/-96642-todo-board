@@ -13,8 +13,8 @@ export class TaskComponent {
   task: ITask;
 
 
-  @Output() public deleteTask: EventEmitter<number> = new EventEmitter<number>();
-  @Output() public showEditPopup: EventEmitter<number> = new EventEmitter<number>();
+  @Output() public deleteTask: EventEmitter<ITask> = new EventEmitter<ITask>();
+  @Output() public showEditPopup: EventEmitter<string> = new EventEmitter<string>();
 
  public completeTask(): void {
     console.log('complete button clicked!')

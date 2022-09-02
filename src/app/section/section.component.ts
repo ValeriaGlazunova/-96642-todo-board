@@ -34,7 +34,7 @@ export class SectionComponent implements OnInit {
     this.currentTasks.next(this.section.tasks);
   }
 
-  showPopup(taskid = 0): void {
+  showPopup(taskid = ' '): void {
     this.viewRef.clear();
     this.componentRef = this.viewRef.createComponent(ModalformComponent);
 
@@ -43,7 +43,6 @@ export class SectionComponent implements OnInit {
     );
     this.componentRef.instance.onEditTask.subscribe((event) => {
       const tasks: ITask[] = this.currentTasks.value;
-      console.log(event, 'changes');
       const editedTask: ITask = {
         title: event.title,
         description: event.description,
@@ -62,7 +61,7 @@ export class SectionComponent implements OnInit {
       const newTask: ITask = {
         title: event.title,
         description: event.description,
-        id: tasks.length + 1,
+        id: Math.random().toString(16).slice(2),
         date: new Date(),
         sectionID: this.section.id,
       };
@@ -76,12 +75,8 @@ export class SectionComponent implements OnInit {
     });
   }
 
-  public deleteThisTask(taskid: number): any {
-    this.dataService.deleteTask(taskid)
-     this.currentTasks.next(
-    //   //this.currentTasks.value.filter((item) => item.id !== taskid)
-       this.section.tasks
-       );
+  public deleteThisTask(task: ITask) {
+     this.dataService.deleteTask(task)
   }
 
 }

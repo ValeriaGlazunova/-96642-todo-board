@@ -3,7 +3,7 @@
 export interface ITask {
   title: string;
   description: string;
-  id: number;
+  id: string;
   date: Date;
   sectionID: number
 }

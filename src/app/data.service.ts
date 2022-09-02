@@ -6,9 +6,6 @@ import { BehaviorSubject, Observable } from "rxjs";
 @Injectable({providedIn: ("root")})
 export class DataService {
   private tasks: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]> ([
-    // {title: 'task 1', description: 'description 1', id: 1, date: new Date, sectionID: 1},
-    // {title: 'task 2', description: 'description 2', id: 2, date: new Date, sectionID: 2},
-    // {title: 'task 3', description: 'description 3', id: 3, date: new Date, sectionID: 3}
   ])
 
   private sections: Section[];
@@ -51,20 +48,20 @@ export class DataService {
 
   public editTask(task: ITask) {
     const currentTasks = this.tasks.value
-    currentTasks.splice(task.id - 1, 1, task);
+    // currentTasks.splice(task.id - 1, 1, task);
+    const updatedTasks = currentTasks.map(item => item.id !== task.id ? item: task)
     localStorage.setItem(
-      'tasks', JSON.stringify(currentTasks)
+      'tasks', JSON.stringify(updatedTasks)
     )
     this.sectionss.next(this.loadTasks())
   }
 
-  public deleteTask(taskid: number): any {
-    console.log('tasks', this.tasks.value)
-    this.tasks.value.filter((item) => item.id !== taskid)
-    this.sectionss.next(this.loadTasks())
-  }
+  public deleteTask(task: ITask) {
 
-  public updateLocalStorage() {
-
+     const currentTasks = this.tasks.value;
+     const filteredTasks = currentTasks.filter(item => item.id !== task.id);
+     console.log('filtered', filteredTasks)
+     localStorage.setItem('tasks', JSON.stringify(filteredTasks))
+     this.sectionss.next(this.loadTasks())
   }
 }
