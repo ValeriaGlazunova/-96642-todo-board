@@ -78,10 +78,10 @@ export class SectionComponent implements OnInit {
 
   public deleteThisTask(taskid: number): any {
     this.dataService.deleteTask(taskid)
-    // this.currentTasks.next(
+     this.currentTasks.next(
     //   //this.currentTasks.value.filter((item) => item.id !== taskid)
-    //   this.section.tasks
-    //   );
+       this.section.tasks
+       );
   }
 
 }
