@@ -10,14 +10,10 @@ export class DataService {
     {title: 'task 2', description: 'description 2', id: 2, date: new Date, sectionID: 2},
     {title: 'task 3', description: 'description 3', id: 3, date: new Date, sectionID: 3}
   ])
-  // public tasks: ITask[] = [
-  //    {title: 'task 1', description: 'description 1', id: 1, date: new Date, sectionID: 1},
-  //     {title: 'task 2', description: 'description 2', id: 2, date: new Date, sectionID: 2},
-  //      {title: 'task 3', description: 'description 3', id: 3, date: new Date, sectionID: 3}
-  //   ]
 
+  private sections: Section[];
   private sectionss: BehaviorSubject<Section[]> = new BehaviorSubject<Section[]> (this.loadTasks())
-  public sections: Section[];
+
 
   public get sections$(): Observable<Section[]> {
     return this.sectionss.asObservable()
@@ -28,7 +24,7 @@ export class DataService {
   }
 
   public loadTasks(): Section[] {
-    this.sections= [
+    this.sections = [
       {color: '#de8a3c', title: 'Idea', id: 1, tasks: []},
       {color: '#de3c3c', title: 'To do', id: 2, tasks: []},
       {color: '#3c90de', title: 'In process', id: 3, tasks: []},
@@ -39,13 +35,23 @@ export class DataService {
     return this.sections
   }
 
-  public addNewTask(task) {
+  public addNewTask(task: ITask) {
     console.log('service works')
-    console.log(this.sectionss, 'sss')
     this.tasks.value.push(task)
     this.sectionss.next(this.loadTasks())
-
   }
+
+  public editTask(task: ITask) {
+    this.tasks.value.splice(task.id - 1, 1, task);
+    this.sectionss.next(this.loadTasks())
+  }
+
+  public deleteTask(taskid: number): any {
+    console.log('tasks', this.tasks.value)
+    this.tasks.value.filter((item) => item.id !== taskid)
+    this.sectionss.next(this.loadTasks())
+  }
+
   public updateLocalStorage() {
 
   }

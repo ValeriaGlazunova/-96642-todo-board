@@ -51,8 +51,9 @@ export class SectionComponent implements OnInit {
         date: new Date(),
         sectionID: this.section.id,
       };
-      tasks.splice(taskid - 1, 1, editedTask);
-      this.currentTasks.next(tasks);
+      //tasks.splice(taskid - 1, 1, editedTask);
+      this.dataService.editTask(editedTask)
+      this.currentTasks.next(this.section.tasks);
       this.componentRef.destroy();
     });
     this.componentRef.instance.onAddTask.subscribe((event) => {
@@ -76,8 +77,12 @@ export class SectionComponent implements OnInit {
   }
 
   public deleteThisTask(taskid: number): any {
-    this.currentTasks.next(
-      this.currentTasks.value.filter((item) => item.id !== taskid)
-    );
+    this.dataService.deleteTask(taskid)
+    // this.currentTasks.next(
+    //   //this.currentTasks.value.filter((item) => item.id !== taskid)
+    //   this.section.tasks
+    //   );
   }
+
 }
+
