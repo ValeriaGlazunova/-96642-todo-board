@@ -79,5 +79,9 @@ export class SectionComponent implements OnInit {
      this.dataService.deleteTask(task)
   }
 
+  public completeThisTask(task: ITask) {
+    this.dataService.completeTask(task)
+  }
+
 }
 

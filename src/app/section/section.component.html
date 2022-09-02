@@ -9,6 +9,7 @@
         *ngFor="let task of currentTasks | async; index as idx"
         [task]="task"
         (deleteTask)="deleteThisTask($event)"
+        (completeTask)="completeThisTask($event)"
         (showEditPopup)="showPopup($event)"
       ></app-task>
     </div>

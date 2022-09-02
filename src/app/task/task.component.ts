@@ -15,9 +15,5 @@ export class TaskComponent {
 
   @Output() public deleteTask: EventEmitter<ITask> = new EventEmitter<ITask>();
   @Output() public showEditPopup: EventEmitter<string> = new EventEmitter<string>();
-
- public completeTask(): void {
-    console.log('complete button clicked!')
-  }
-
+  @Output() public completeTask: EventEmitter<ITask> = new EventEmitter<ITask>();
 };

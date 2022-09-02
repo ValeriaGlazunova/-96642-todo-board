@@ -6,7 +6,11 @@
   </div>
   <div class="task__actions">
     <button class="task__edit" (click)="showEditPopup.emit(task.id)"></button>
-    <button (click)="completeTask()" class="task__complete"></button>
+    <button *ngIf="task.sectionID !== 4; else noCompleteBtn" (click)="completeTask.emit(task)" class="task__complete" ></button>
     <button (click)="deleteTask.emit(task)" class="task__delete"></button>
   </div>
 </div>
+
+<ng-template #noCompleteBtn>
+
+</ng-template>

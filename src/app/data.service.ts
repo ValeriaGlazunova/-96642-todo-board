@@ -64,4 +64,20 @@ export class DataService {
      localStorage.setItem('tasks', JSON.stringify(filteredTasks))
      this.sectionss.next(this.loadTasks())
   }
+
+  public completeTask(task: ITask) {
+    const currentTasks = this.tasks.value;
+    const updTask: ITask = {
+      title: task.title,
+      description:task.description,
+      id: task.id,
+      date: task.date,
+      sectionID: task.sectionID+1,
+    }
+    const updatedTasks = currentTasks.map(item => item.id !== task.id ? item: updTask )
+     localStorage.setItem(
+       'tasks', JSON.stringify(updatedTasks)
+     )
+     this.sectionss.next(this.loadTasks())
+  }
 }
