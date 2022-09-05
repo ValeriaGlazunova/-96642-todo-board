@@ -1,6 +1,16 @@
 import { Component, EventEmitter, OnInit, Output, Input } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
 import { ITask } from "../task/task.interface";
+
+function dateRequired(): ValidatorFn {
+  return ( control: AbstractControl ) => {
+    const value: Date = control.value;
+    const minDate: Date = new Date();
+    const maxDate: Date = new Date('2025-12-31');
+    console.log('msx', value)
+    return value && new Date(value)>minDate && new Date(value)<maxDate ? null : {dateRequired: 'обязательное поле'};
+  }
+}
 
 @Component ({
   selector: 'app-modalform',
@@ -30,6 +40,7 @@ export class ModalformComponent implements OnInit {
   }
 
   public addTask() {
+    this.form.markAllAsTouched();
     if (this.form.valid) {
     this.onAddTask.emit(this.form.value);
     }
@@ -40,6 +51,7 @@ export class ModalformComponent implements OnInit {
   }
 
   public editTask() {
+    this.form.markAllAsTouched();
     this.onEditTask.emit(this.form.value)
   }
 
@@ -47,7 +59,7 @@ export class ModalformComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(taskName, Validators.required),
       description: new FormControl(taskDescription, Validators.required),
-      date: new FormControl(taskDate, Validators.required)
+      date: new FormControl(taskDate, dateRequired())
     })
   }
 }
